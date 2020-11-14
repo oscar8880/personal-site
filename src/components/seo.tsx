@@ -2,15 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-interface MetaItem {
-  name: string;
-  content: string;
-}
-
 interface SEOProps {
   description?: string;
   lang?: string;
-  meta?: MetaItem[];
+  meta?: [];
   title: string;
 }
 
@@ -30,8 +25,6 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'en', meta, title }) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
-  const siteMeta = meta || site.meta;
 
   return (
     <Helmet
@@ -39,7 +32,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'en', meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: 'description',
@@ -63,7 +56,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'en', meta, title }) => {
         },
         {
           name: 'twitter:creator',
-          content: site.siteMetadata?.author || '',
+          content: site.siteMetadata.author,
         },
         {
           name: 'twitter:title',
@@ -73,7 +66,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'en', meta, title }) => {
           name: 'twitter:description',
           content: metaDescription,
         },
-      ].concat(siteMeta)}
+      ].concat(meta || [])}
     />
   );
 };
