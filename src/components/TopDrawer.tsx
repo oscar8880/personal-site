@@ -1,10 +1,9 @@
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Backdrop from './Backdrop';
-import { H1 } from './Typography';
 
 const NavLinkContainer = styled.div`
   position: fixed;
@@ -15,7 +14,7 @@ const NavLinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colour.white};
-  padding-top: ${({ theme }) => theme.spacer[10]};
+  padding-top: ${({ theme }) => theme.spacer['xl']};
   padding-bottom: ${({ theme }) => theme.spacer[10]};
   display: flex;
   flex-direction: column;
@@ -51,8 +50,8 @@ const UnstyledButton = styled.button`
   background-color: inherit;
   position: absolute;
   z-index: 300;
-  right: ${({ theme }) => theme.spacer[6]};
-  top: ${({ theme }) => theme.spacer[6]};
+  right: ${({ theme }) => theme.spacer[7]};
+  top: ${({ theme }) => theme.spacer[10]};
 `;
 
 interface TopDrawerProps {

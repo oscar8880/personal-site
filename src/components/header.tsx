@@ -30,7 +30,7 @@ const StyledSpan = styled.span`
 
 const BurgerContainer = styled.div`
   display: initial;
-  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     display: none;
   }
 `;
@@ -45,7 +45,7 @@ const UnstyledButton = styled.button`
 
 const NavLinkContainer = styled.ul`
   display: none;
-  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     display: initial;
   }
 `;
@@ -70,14 +70,22 @@ const NavLink = styled(Link)`
   }
 `;
 
+const UnstyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <StyledHeader>
-      <H1>
-        Oscar<StyledSpan>Zealley</StyledSpan>
-      </H1>
+      <UnstyledLink to="/">
+        <H1>
+          Oscar<StyledSpan>Zealley</StyledSpan>
+        </H1>
+      </UnstyledLink>
+
       <BurgerContainer>
         <UnstyledButton type="button" onClick={() => setShowMenu(true)}>
           <FontAwesomeIcon size="3x" color="#020202" icon={faBars} />
