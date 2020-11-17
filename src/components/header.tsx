@@ -1,38 +1,102 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
-interface HeaderProps {
-  siteTitle: string;
-}
+import TopDrawer from './TopDrawer';
+import { H1 } from './Typography';
 
 const StyledHeader = styled.header`
-  background: ${({ theme }) => theme.colour.primary};
-  margin-bottom: '1.45rem';
+  padding-left: ${({ theme }) => theme.spacer[6]};
+  padding-right: ${({ theme }) => theme.spacer[6]};
+  padding-top: ${({ theme }) => theme.spacer[6]};
+  padding-bottom: ${({ theme }) => theme.spacer[6]};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
+    padding-left: ${({ theme }) => theme.spacer[0]};
+    padding-right: ${({ theme }) => theme.spacer[0]};
+    padding-top: ${({ theme }) => theme.spacer['xl']};
+    padding-bottom: ${({ theme }) => theme.spacer['xl']};
+  }
 `;
 
-const Container = styled.div`
-  margin: 0 auto;
-  max-width: 960;
-  padding: 1.45rem 1.0875rem;
+const StyledSpan = styled.span`
+  color: ${({ theme }) => theme.colour.grey[500]};
+  display: block;
 `;
 
-const Header: React.FC<HeaderProps> = ({ siteTitle = '' }) => (
-  <StyledHeader>
-    <Container>
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </Container>
-  </StyledHeader>
-);
+const BurgerContainer = styled.div`
+  display: initial;
+  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
+    display: none;
+  }
+`;
+
+const UnstyledButton = styled.button`
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+`;
+
+const NavLinkContainer = styled.ul`
+  display: none;
+  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
+    display: initial;
+  }
+`;
+
+const NavLink = styled(Link)`
+  font-size: ${({ theme }) => theme.fontSize['3xl']};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  text-decoration: none;
+  color: ${({ theme }) => theme.colour.primaryFont};
+  margin-left: ${({ theme }) => theme.spacer[7]};
+  position: relative;
+  &.active {
+    ::after {
+      content: '';
+      position: absolute;
+      height: 5px;
+      bottom: -8px;
+      right: 0;
+      width: 100%;
+      background-color: ${({ theme }) => theme.colour.pink};
+    }
+  }
+`;
+
+const Header: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  return (
+    <StyledHeader>
+      <H1>
+        Oscar<StyledSpan>Zealley</StyledSpan>
+      </H1>
+      <BurgerContainer>
+        <UnstyledButton type="button" onClick={() => setShowMenu(true)}>
+          <FontAwesomeIcon size="3x" color="#020202" icon={faBars} />
+        </UnstyledButton>
+      </BurgerContainer>
+      <NavLinkContainer>
+        <NavLink to="/" activeClassName="active">
+          Home
+        </NavLink>
+        <NavLink to="/blog" activeClassName="active">
+          Blog
+        </NavLink>
+        <NavLink to="/credits" activeClassName="active">
+          Credits
+        </NavLink>
+      </NavLinkContainer>
+      <TopDrawer show={showMenu} close={() => setShowMenu(false)} />
+    </StyledHeader>
+  );
+};
 
 export default Header;

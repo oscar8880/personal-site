@@ -144,12 +144,13 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body {
     scroll-behavior: smooth;
-    background-color: ${({ theme }) => theme.colour.grey[100]};
-    color: ${({ theme }) => theme.colour.grey[900]};
+    background-color: ${({ theme }) => theme.colour.white};
+    color: ${({ theme }) => theme.colour.primaryFont};
     font-family: ${({ theme }) => theme.font.default};
   }
   p,h1,h2,h3,h4,h5,h6 {
     margin: 0;
     padding: 0;
+    line-height: 1.17;
   }
 `;

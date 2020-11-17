@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from './Header';
 import styled, { ThemeProvider } from 'styled-components';
 import { defaultTheme, GlobalStyle } from '../theme/globalStyles';
+import PageWrapper from './PageWrapper';
 
 const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -16,21 +17,15 @@ const Layout: React.FC = ({ children }) => {
     }
   `);
 
-  const PageWrapper = styled.div`
-    margin: 0 auto;
-    max-width: 960;
-    padding: 0 1.0875rem 1.45rem;
-  `
-
   const Footer = styled.footer`
     margin-top: 2rem;
-  `
+  `;
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
       <PageWrapper>
+        <Header />
         <main>{children}</main>
         <Footer
           style={{
