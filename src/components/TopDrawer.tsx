@@ -1,11 +1,12 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Backdrop from './Backdrop';
+import { useSpring, animated } from 'react-spring';
+import NavLink from './NavLink';
 
-const NavLinkContainer = styled.div`
+const NavLinkContainer = styled(animated.div)`
   position: fixed;
   width: 100%;
   top: 0;
@@ -20,26 +21,6 @@ const NavLinkContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-`;
-
-const NavLink = styled(Link)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  text-decoration: none;
-  color: ${({ theme }) => theme.colour.primaryFont};
-  margin-bottom: ${({ theme }) => theme.spacer[8]};
-  position: relative;
-  &.active {
-    ::after {
-      content: '';
-      position: absolute;
-      height: 5px;
-      bottom: -8px;
-      right: 0;
-      width: 100%;
-      background-color: ${({ theme }) => theme.colour.pink};
-    }
-  }
 `;
 
 const UnstyledButton = styled.button`
@@ -60,21 +41,25 @@ interface TopDrawerProps {
 }
 
 const TopDrawer: React.FC<TopDrawerProps> = ({ show, close }) => {
+  const props = useSpring({
+    marginTop: show ? 0 : -100,
+  });
+
   return (
     <>
       <Backdrop show={show} clicked={close} />
       {show && (
-        <NavLinkContainer>
+        <NavLinkContainer style={props}>
           <UnstyledButton type="button" onClick={close}>
             <FontAwesomeIcon size="3x" color="#020202" icon={faTimes} />
           </UnstyledButton>
-          <NavLink to="/" activeClassName="active">
+          <NavLink size="mobile" to="/" activeClassName="active">
             Home
           </NavLink>
-          <NavLink to="/blog" activeClassName="active">
+          <NavLink size="mobile" to="/blog" activeClassName="active">
             Blog
           </NavLink>
-          <NavLink to="/credits" activeClassName="active">
+          <NavLink size="mobile" to="/credits" activeClassName="active">
             Credits
           </NavLink>
         </NavLinkContainer>

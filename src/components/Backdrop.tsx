@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 const StyledBackdrop = styled.div`
   width: 100%;
@@ -8,7 +9,8 @@ const StyledBackdrop = styled.div`
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000;
+  opacity: 0.5;
 `;
 
 interface BackdropProps {
@@ -17,7 +19,18 @@ interface BackdropProps {
 }
 
 const Backdrop: React.FC<BackdropProps> = ({ show = false, clicked }) => {
-  return <>{show && <StyledBackdrop onClick={clicked} />}</>;
+  const [props, set] = useSpring(() => ({ opacity: 1 }));
+  set({ opacity: show ? 1 : 0 });
+
+  return (
+    <>
+      {show && (
+        <animated.div style={props}>
+          <StyledBackdrop onClick={clicked} />
+        </animated.div>
+      )}
+    </>
+  );
 };
 
 export default Backdrop;

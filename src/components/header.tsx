@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import NavLink from './NavLink';
 import TopDrawer from './TopDrawer';
 import { H1 } from './Typography';
 
@@ -50,26 +51,6 @@ const NavLinkContainer = styled.ul`
   }
 `;
 
-const NavLink = styled(Link)`
-  font-size: ${({ theme }) => theme.fontSize['3xl']};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  text-decoration: none;
-  color: ${({ theme }) => theme.colour.primaryFont};
-  margin-left: ${({ theme }) => theme.spacer[7]};
-  position: relative;
-  &.active {
-    ::after {
-      content: '';
-      position: absolute;
-      height: 5px;
-      bottom: -8px;
-      right: 0;
-      width: 100%;
-      background-color: ${({ theme }) => theme.colour.pink};
-    }
-  }
-`;
-
 const UnstyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
@@ -92,13 +73,13 @@ const Header: React.FC = () => {
         </UnstyledButton>
       </BurgerContainer>
       <NavLinkContainer>
-        <NavLink to="/" activeClassName="active">
+        <NavLink size="desktop" to="/" activeClassName="active">
           Home
         </NavLink>
-        <NavLink to="/blog" activeClassName="active">
+        <NavLink size="desktop" to="/blog" activeClassName="active">
           Blog
         </NavLink>
-        <NavLink to="/credits" activeClassName="active">
+        <NavLink size="desktop" to="/credits" activeClassName="active">
           Credits
         </NavLink>
       </NavLinkContainer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './Header';
 import styled, { ThemeProvider } from 'styled-components';
@@ -7,15 +7,15 @@ import { defaultTheme, GlobalStyle } from '../theme/globalStyles';
 import PageWrapper from './PageWrapper';
 
 const Layout: React.FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `);
 
   const Footer = styled.footer`
     margin-top: 2rem;

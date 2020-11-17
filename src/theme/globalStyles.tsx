@@ -68,6 +68,9 @@ declare module 'styled-components' {
       lg: string;
       xl: string;
     };
+    transition: {
+      default: string;
+    };
   }
 }
 
@@ -132,6 +135,9 @@ export const defaultTheme: DefaultTheme = {
     md: '768px',
     lg: '1024px',
     xl: '1200px',
+  },
+  transition: {
+    default: 'all 0.35s cubic-bezier(0, 0.75, 0.25, 1)',
   },
 };
 
