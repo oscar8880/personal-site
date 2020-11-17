@@ -1,15 +1,21 @@
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
 import reset from 'styled-reset';
 
+const rem = (pixels: number, base = 16): string => {
+  return `${pixels / base}rem`;
+};
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     font: {
       default: string;
     };
     colour: {
-      primary: string;
-      secondary: string;
-      primaryDark: string;
+      primaryFont: string;
+      pink: string;
+      green: string;
+      yellow: string;
+      blue: string;
       white: string;
       black: string;
       grey: {
@@ -33,8 +39,6 @@ declare module 'styled-components' {
       '2xl': string;
       '3xl': string;
       '4xl': string;
-      '5xl': string;
-      '6xl': string;
     };
     fontWeight: {
       light: string;
@@ -58,6 +62,12 @@ declare module 'styled-components' {
       xl: string;
       '2xl': string;
     };
+    breakpoint: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
   }
 }
 
@@ -66,9 +76,11 @@ export const defaultTheme: DefaultTheme = {
     default: 'Open Sans, sans-serif;',
   },
   colour: {
-    primary: '#983FA2',
-    secondary: '#00a2b8',
-    primaryDark: '#1c0221',
+    primaryFont: '#020202',
+    pink: '#EF476F',
+    green: '#06D6A0',
+    yellow: '#FFD166',
+    blue: '#1FB7EA',
     white: '#fff',
     black: '#000',
     grey: {
@@ -84,16 +96,14 @@ export const defaultTheme: DefaultTheme = {
     },
   },
   fontSize: {
-    xs: '0.75rem',
-    sm: '0.875rem',
-    base: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '4rem',
+    xs: rem(12),
+    sm: rem(14),
+    base: rem(16),
+    lg: rem(18),
+    xl: rem(21),
+    '2xl': rem(22),
+    '3xl': rem(24),
+    '4xl': rem(36),
   },
   fontWeight: {
     light: '300',
@@ -114,8 +124,14 @@ export const defaultTheme: DefaultTheme = {
     10: '40px',
     11: '44px',
     12: '48px',
-    xl: '80px',
+    xl: '64px',
     '2xl': '120px',
+  },
+  breakpoint: {
+    sm: '0',
+    md: '768px',
+    lg: '1024px',
+    xl: '1200px',
   },
 };
 
