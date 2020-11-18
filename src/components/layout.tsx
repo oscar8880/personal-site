@@ -5,6 +5,11 @@ import { ThemeProvider } from 'styled-components';
 import { defaultTheme, GlobalStyle } from '../theme/globalStyles';
 import PageWrapper from './PageWrapper';
 import Footer from './Footer';
+import { setConfiguration } from 'react-grid-system';
+
+setConfiguration({
+  gutterWidth: 40,
+});
 
 const Layout: React.FC = ({ children }) => {
   return (

@@ -14,7 +14,13 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.base};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   @media (min-width: 768px) {
     font-size: ${({ theme }) => theme.fontSize['2xl']};
   }
+`;
+
+export const H3 = styled.h3`
+  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
 `;

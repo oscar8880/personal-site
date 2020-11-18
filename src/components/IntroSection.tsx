@@ -9,15 +9,16 @@ import { animated, config, useSpring } from 'react-spring';
 import { useVisibility } from '../utils/useVisibility';
 
 const Container = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacer['xl']};
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: ${({ theme }) => theme.spacer[6]};
+  padding-bottom: ${({ theme }) => theme.spacer[12]};
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     flex-direction: row;
     align-items: flex-end;
+    padding-bottom: ${({ theme }) => theme.spacer['2xl']};
   }
 `;
 
@@ -25,7 +26,10 @@ const BlobContainer = styled.div`
   opacity: 0.15;
   position: absolute;
   top: 0;
-  left: 0;
+  right: ${({ theme }) => theme.spacer['xl']};
+  @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
+    right: 50%;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -95,9 +99,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 const IntroSection: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
-      image: contentfulAsset(
-        id: { eq: "efcef2ee-ccc3-5366-8234-98f2e06519f6" }
-      ) {
+      image: contentfulAsset(contentful_id: { eq: "41kQVrYKodYUd7l7DrxrhP" }) {
         fluid(maxWidth: 300) {
           ...GatsbyContentfulFluid_noBase64
         }
