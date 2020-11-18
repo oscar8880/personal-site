@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: '.env',
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
@@ -17,6 +21,13 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_ACCESS_TOKEN,
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

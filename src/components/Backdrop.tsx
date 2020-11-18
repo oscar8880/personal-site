@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
 
-const StyledBackdrop = styled.div`
+interface StyledBackdropProps {
+  show: boolean;
+}
+
+const StyledBackdrop = styled.div<StyledBackdropProps>`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -10,7 +13,7 @@ const StyledBackdrop = styled.div`
   top: 0;
   left: 0;
   background-color: #000;
-  opacity: 0.5;
+  opacity: ${({ show }) => (show ? 0.5 : 0)};
 `;
 
 interface BackdropProps {
@@ -19,18 +22,7 @@ interface BackdropProps {
 }
 
 const Backdrop: React.FC<BackdropProps> = ({ show = false, clicked }) => {
-  const [props, set] = useSpring(() => ({ opacity: 1 }));
-  set({ opacity: show ? 1 : 0 });
-
-  return (
-    <>
-      {show && (
-        <animated.div style={props}>
-          <StyledBackdrop onClick={clicked} />
-        </animated.div>
-      )}
-    </>
-  );
+  return <>{show && <StyledBackdrop show={show} onClick={clicked} />}</>;
 };
 
 export default Backdrop;

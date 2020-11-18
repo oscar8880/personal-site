@@ -32,6 +32,7 @@ const ImageContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
   max-width: 250px;
+  z-index: 5;
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     margin-left: ${({ theme }) => theme.spacer['xl']};
   }
@@ -92,12 +93,13 @@ const StyledIcon = styled(FontAwesomeIcon)`
 const IntroSection: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "laptop.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
+      image: contentfulAsset(
+        id: { eq: "efcef2ee-ccc3-5366-8234-98f2e06519f6" }
+      ) {
+        fluid(maxWidth: 300) {
+          ...GatsbyContentfulFluid_noBase64
         }
+        title
       }
     }
   `);
@@ -108,7 +110,7 @@ const IntroSection: React.FC = () => {
         <Blob colour="green" shape="1" width={450} />
       </BlobContainer>
       <ImageContainer>
-        <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+        <Img fluid={data.image.fluid} alt={data.image.title} />
       </ImageContainer>
       <StraplineContainer>
         <Strapline>

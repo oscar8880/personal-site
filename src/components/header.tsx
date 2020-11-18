@@ -76,9 +76,6 @@ const Header: React.FC = () => {
         <NavLink size="desktop" to="/" activeClassName="active">
           Home
         </NavLink>
-        <NavLink size="desktop" to="/blog" activeClassName="active">
-          Blog
-        </NavLink>
         <NavLink size="desktop" to="/credits" activeClassName="active">
           Credits
         </NavLink>

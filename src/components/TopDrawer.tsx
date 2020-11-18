@@ -42,7 +42,7 @@ interface TopDrawerProps {
 
 const TopDrawer: React.FC<TopDrawerProps> = ({ show, close }) => {
   const props = useSpring({
-    marginTop: show ? 0 : -100,
+    marginTop: show ? 0 : -150,
   });
 
   return (
@@ -55,9 +55,6 @@ const TopDrawer: React.FC<TopDrawerProps> = ({ show, close }) => {
           </UnstyledButton>
           <NavLink size="mobile" to="/" activeClassName="active">
             Home
-          </NavLink>
-          <NavLink size="mobile" to="/blog" activeClassName="active">
-            Blog
           </NavLink>
           <NavLink size="mobile" to="/credits" activeClassName="active">
             Credits
