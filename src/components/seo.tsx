@@ -67,7 +67,12 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'en', meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta || [])}
-    />
+    >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
   );
 };
 

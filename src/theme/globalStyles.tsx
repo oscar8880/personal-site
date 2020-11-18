@@ -143,7 +143,6 @@ export const defaultTheme: DefaultTheme = {
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
   *, *:before, *:after {
     box-sizing: border-box;
   }

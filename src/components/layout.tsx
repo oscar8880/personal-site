@@ -6,6 +6,10 @@ import styled, { ThemeProvider } from 'styled-components';
 import { defaultTheme, GlobalStyle } from '../theme/globalStyles';
 import PageWrapper from './PageWrapper';
 
+const Footer = styled.footer`
+  margin-top: 2rem;
+`;
+
 const Layout: React.FC = ({ children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
@@ -16,10 +20,6 @@ const Layout: React.FC = ({ children }) => {
   //     }
   //   }
   // `);
-
-  const Footer = styled.footer`
-    margin-top: 2rem;
-  `;
 
   return (
     <ThemeProvider theme={defaultTheme}>
