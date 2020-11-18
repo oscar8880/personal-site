@@ -1,10 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Blob from './Blob';
 import Img from 'gatsby-image';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { animated, config, useSpring } from 'react-spring';
+import { useVisibility } from '../utils/useVisibility';
 
 const Container = styled.div`
   margin-bottom: ${({ theme }) => theme.spacer['xl']};
@@ -103,9 +105,19 @@ const IntroSection: React.FC = () => {
       }
     }
   `);
+  const [visible, setVisible] = useState(false);
+  const props = useSpring({
+    transform: visible
+      ? 'translate3d(0%, 0px, 0px)'
+      : 'translate3d(50%, 0px, 0px)',
+    config: config.gentle,
+  });
+  const visibilityMarker = useVisibility(visible => {
+    setVisible(visible);
+  }, []);
 
   return (
-    <Container>
+    <Container ref={visibilityMarker}>
       <BlobContainer>
         <Blob colour="green" shape="1" width={450} />
       </BlobContainer>
@@ -113,21 +125,23 @@ const IntroSection: React.FC = () => {
         <Img fluid={data.image.fluid} alt={data.image.title} />
       </ImageContainer>
       <StraplineContainer>
-        <Strapline>
-          I’m Oscar Zealley, a professional JavaScript engineer and web
-          development enthusiast
-        </Strapline>
-        <IconContainer>
-          <StyledLink href="https://github.com/oscar8880" target="_blank">
-            <StyledIcon size="3x" color="#020202" icon={faGithubSquare} />
-          </StyledLink>
-          <StyledLink
-            href="https://www.linkedin.com/in/oscar-zealley-81a027123/"
-            target="_blank"
-          >
-            <StyledIcon size="3x" color="#020202" icon={faLinkedin} />
-          </StyledLink>
-        </IconContainer>
+        <animated.div style={props}>
+          <Strapline>
+            I’m Oscar Zealley, a professional JavaScript engineer and web
+            development enthusiast
+          </Strapline>
+          <IconContainer>
+            <StyledLink href="https://github.com/oscar8880" target="_blank">
+              <StyledIcon size="3x" color="#020202" icon={faGithubSquare} />
+            </StyledLink>
+            <StyledLink
+              href="https://www.linkedin.com/in/oscar-zealley-81a027123/"
+              target="_blank"
+            >
+              <StyledIcon size="3x" color="#020202" icon={faLinkedin} />
+            </StyledLink>
+          </IconContainer>
+        </animated.div>
       </StraplineContainer>
     </Container>
   );
