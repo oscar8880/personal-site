@@ -105,7 +105,7 @@ const ProjectSection: React.FC = () => {
 
   return (
     <PageContainer ref={visibilityMarker}>
-      <SectionTitle>Project Highlights</SectionTitle>
+      <SectionTitle>Projects</SectionTitle>
       <BlobContainer>
         <Blob colour="pink" shape="2" width={450} />
       </BlobContainer>
