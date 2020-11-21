@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { P, H3 } from './Typography';
+import { H3 } from './Typography';
 import Img from 'gatsby-image';
+import 'react-multi-carousel/lib/styles.css';
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +13,8 @@ const Container = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     margin-bottom: ${({ theme }) => theme.spacer[12]};
   }
-  overflow-y: scroll;
+  max-width: 350px;
+  min-width: 300px;
 `;
 
 const InfoContainer = styled.div`
@@ -31,7 +33,12 @@ const Description = styled.div`
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: any;
+  image: {
+    aspectRatio: number;
+    sizes: string;
+    src: string;
+    srcSet: string;
+  };
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({

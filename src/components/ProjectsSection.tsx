@@ -2,17 +2,14 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Blob from './Blob';
-import Img from 'gatsby-image';
-import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { animated, config, useSpring } from 'react-spring';
+import { config, useSpring, animated } from 'react-spring';
 import { useVisibility } from '../utils/useVisibility';
-import { H2 } from './Typography';
 import { SectionTitle } from './SectionTitle';
 import ProjectCard from './ProjectCard';
-import { Container, Col, Row } from 'react-grid-system';
+import ProjectCarousel from './ProjectsCarousel';
 
 const PageContainer = styled.div`
+  min-height: 600px;
   margin-bottom: ${({ theme }) => theme.spacer['2xl']};
   position: relative;
   margin-left: ${({ theme }) => theme.spacer[5]};
@@ -28,32 +25,42 @@ const PageContainer = styled.div`
 const BlobContainer = styled.div`
   opacity: 0.15;
   position: absolute;
-  top: ${({ theme }) => theme.spacer['xl']};
+  top: ${({ theme }) => theme.spacer['2xl']};
   right: ${({ theme }) => theme.spacer[0]};
 `;
 
 const ProjectsContainer = styled.div`
-  padding-top: ${({ theme }) => theme.spacer['xl']};
+  padding-top: ${({ theme }) => theme.spacer[12]};
+  padding-bottom: ${({ theme }) => theme.spacer[12]};
   width: 100%;
-  margin: 0 auto;
-  @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
-    margin: 0;
+  @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
+    width: 100%;
   }
 `;
 
-const ProjectSection: React.FC = () => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     image: contentfulAsset(contentful_id: { eq: "5MCcvGvraXndHAgsUxaAHx" }) {
-  //       fluid(maxWidth: 500, maxHeight: 500) {
-  //         ...GatsbyContentfulFluid_noBase64
-  //       }
-  //       title
-  //     }
-  //   }
-  // `);
+interface ComponentData {
+  allContentfulProjectHighlight: {
+    nodes: [
+      {
+        description: string;
+        image: {
+          fluid: {
+            aspectRatio: number;
+            sizes: string;
+            src: string;
+            srcSet: string;
+          };
+        };
+        link: string;
+        order: number;
+        title: string;
+      }
+    ];
+  };
+}
 
-  const data = useStaticQuery(graphql`
+const ProjectSection: React.FC = () => {
+  const data: ComponentData = useStaticQuery(graphql`
     query {
       allContentfulProjectHighlight {
         nodes {
@@ -70,19 +77,31 @@ const ProjectSection: React.FC = () => {
       }
     }
   `);
-
   const [visible, setVisible] = useState(false);
   const props = useSpring({
     transform: visible
       ? 'translate3d(0%, 0px, 0px)'
-      : 'translate3d(50%, 0px, 0px)',
+      : 'translate3d(-50%, 0px, 0px)',
     config: config.gentle,
   });
   const visibilityMarker = useVisibility(visible => {
     setVisible(visible);
   }, []);
 
-  console.log(data);
+  const projects = data.allContentfulProjectHighlight.nodes
+    .sort((a, b) => {
+      return a.order < b.order ? -1 : 1;
+    })
+    .map(project => {
+      return (
+        <ProjectCard
+          key={project.title}
+          title={project.title}
+          description={project.description}
+          image={project.image.fluid}
+        />
+      );
+    });
 
   return (
     <PageContainer ref={visibilityMarker}>
@@ -91,21 +110,9 @@ const ProjectSection: React.FC = () => {
         <Blob colour="pink" shape="2" width={450} />
       </BlobContainer>
       <ProjectsContainer>
-        <Container fluid>
-          <Row justify="center">
-            {data.allContentfulProjectHighlight.nodes.map(proj => {
-              return (
-                <Col key={proj.title} sm={6} lg={4}>
-                  <ProjectCard
-                    title={proj.title}
-                    description={proj.description}
-                    image={proj.image.fluid}
-                  />
-                </Col>
-              );
-            })}
-          </Row>
-        </Container>
+        <animated.div style={props}>
+          <ProjectCarousel projects={projects} />
+        </animated.div>
       </ProjectsContainer>
     </PageContainer>
   );
