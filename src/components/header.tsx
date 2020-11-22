@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
 `;
 
 const StyledSpan = styled.span`
-  color: ${({ theme }) => theme.colour.grey[500]};
+  color: ${({ theme }) => theme.colour.grey500};
   display: block;
 `;
 

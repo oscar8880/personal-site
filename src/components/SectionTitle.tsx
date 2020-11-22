@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import { H2 } from './Typography';
 
-export const SectionTitle = styled(H2)`
+interface SectionTitleProps {
+  colour: keyof DefaultTheme['colour'];
+}
+
+export const SectionTitle = styled(H2)<SectionTitleProps>`
   display: inline-block;
   position: relative;
   text-align: left;
@@ -12,7 +16,8 @@ export const SectionTitle = styled(H2)`
     bottom: -8px;
     right: 0;
     width: 100%;
-    background-color: ${({ theme }) => theme.colour.pink};
+    background-color: ${({ colour, theme }) =>
+      theme.colour[`${colour}` as keyof DefaultTheme['colour']]};
     transition: all 0.25s;
   }
 `;

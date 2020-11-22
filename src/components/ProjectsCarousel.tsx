@@ -50,7 +50,7 @@ interface StyledDotProps {
 
 const StyledDot = styled.button<StyledDotProps>`
   background-color: ${({ active, theme }) =>
-    active ? theme.colour.pink : theme.colour.grey[300]};
+    active ? theme.colour.pink : theme.colour.grey300};
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -91,10 +91,6 @@ const StyledCarousel = styled(Carousel).attrs({
   className: 'carouselContainer',
 })`
   &.carouselContainer {
-    padding-left: 50px;
-    @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
-      padding-left: 0px;
-    }
     @media (min-width: ${({ theme }) => theme.breakpoint.lg}) {
       padding-left: 50px;
     }

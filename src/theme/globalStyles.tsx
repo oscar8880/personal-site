@@ -18,17 +18,15 @@ declare module 'styled-components' {
       blue: string;
       white: string;
       black: string;
-      grey: {
-        100: string;
-        200: string;
-        300: string;
-        400: string;
-        500: string;
-        600: string;
-        700: string;
-        800: string;
-        900: string;
-      };
+      grey100: string;
+      grey200: string;
+      grey300: string;
+      grey400: string;
+      grey500: string;
+      grey600: string;
+      grey700: string;
+      grey800: string;
+      grey900: string;
     };
     fontSize: {
       xs: string;
@@ -86,17 +84,15 @@ export const defaultTheme: DefaultTheme = {
     blue: '#1FB7EA',
     white: '#fff',
     black: '#000',
-    grey: {
-      100: '#f2f6ff',
-      200: '#ebebeb',
-      300: '#d3d3d3',
-      400: '#b1b4b6',
-      500: '#888',
-      600: '#717171',
-      700: '#6b6b6b',
-      800: '#333',
-      900: '#020202',
-    },
+    grey100: '#f2f6ff',
+    grey200: '#ebebeb',
+    grey300: '#d3d3d3',
+    grey400: '#b1b4b6',
+    grey500: '#888',
+    grey600: '#717171',
+    grey700: '#6b6b6b',
+    grey800: '#333',
+    grey900: '#020202',
   },
   fontSize: {
     xs: rem(12),

@@ -7,7 +7,7 @@ import 'react-multi-carousel/lib/styles.css';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 14px -2px rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.colour.white};
   margin-bottom: ${({ theme }) => theme.spacer[12]};
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
@@ -28,6 +28,7 @@ const InfoContainer = styled.div`
 
 const Description = styled.div`
   padding-top: ${({ theme }) => theme.spacer[2]};
+  line-height: 1.25;
 `;
 
 interface ProjectCardProps {

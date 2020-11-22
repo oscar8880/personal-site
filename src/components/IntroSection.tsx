@@ -18,7 +18,7 @@ const Container = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
     flex-direction: row;
     align-items: flex-end;
-    padding-bottom: ${({ theme }) => theme.spacer['2xl']};
+    padding-bottom: ${({ theme }) => theme.spacer['xl']};
   }
 `;
 
@@ -111,7 +111,8 @@ const IntroSection: React.FC = () => {
   const props = useSpring({
     transform: visible
       ? 'translate3d(0%, 0px, 0px)'
-      : 'translate3d(50%, 0px, 0px)',
+      : 'translate3d(0%, 50%, 0px)',
+    opacity: visible ? 1 : 0,
     config: config.gentle,
   });
   const visibilityMarker = useVisibility(visible => {
