@@ -8,7 +8,7 @@ import Footer from './Footer';
 import { setConfiguration } from 'react-grid-system';
 
 setConfiguration({
-  gutterWidth: 40,
+  gutterWidth: 0,
 });
 
 const Layout: React.FC = ({ children }) => {

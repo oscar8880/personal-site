@@ -5,6 +5,7 @@ import SEO from '../components/SEO';
 import IntroSection from '../components/IntroSection';
 import ProjectSection from '../components/ProjectsSection';
 import ExperienceSection from '../components/ExperienceSection';
+import SkillsSection from '../components/SkillsSection';
 
 const IndexPage: React.FC = () => (
   <Layout>
@@ -12,6 +13,7 @@ const IndexPage: React.FC = () => (
     <IntroSection />
     <ProjectSection />
     <ExperienceSection />
+    <SkillsSection />
   </Layout>
 );
 
