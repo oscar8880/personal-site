@@ -59,6 +59,7 @@ declare module 'styled-components' {
       12: string;
       xl: string;
       '2xl': string;
+      '3xl': string;
     };
     breakpoint: {
       sm: string;
@@ -84,7 +85,7 @@ export const defaultTheme: DefaultTheme = {
     blue: '#1FB7EA',
     white: '#fff',
     black: '#000',
-    grey100: '#f2f6ff',
+    grey100: '#f5f5f5',
     grey200: '#ebebeb',
     grey300: '#d3d3d3',
     grey400: '#b1b4b6',
@@ -125,9 +126,10 @@ export const defaultTheme: DefaultTheme = {
     12: '48px',
     xl: '64px',
     '2xl': '120px',
+    '3xl': '180px',
   },
   breakpoint: {
-    sm: '0',
+    sm: '576px',
     md: '768px',
     lg: '1024px',
     xl: '1200px',
