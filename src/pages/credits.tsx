@@ -6,7 +6,7 @@ import { P } from '../components/Typography';
 
 const IndexPage: React.FC = () => (
   <Layout>
-    <SEO title="Blog" />
+    <SEO title="Credits" />
     <P>Credits will be here</P>
   </Layout>
 );

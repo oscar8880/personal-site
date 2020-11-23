@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { animated, config, useSpring } from 'react-spring';
 import styled from 'styled-components';
+import { useVisibility } from '../utils/useVisibility';
 import { P } from './Typography';
 
 const SkillBarContainer = styled.div`
@@ -28,10 +30,20 @@ interface SkillProps {
 }
 
 const Skill: React.FC<SkillProps> = ({ skill, level }) => {
+  const [visible, setVisible] = useState(false);
+  const props = useSpring({
+    number: visible ? level : 0,
+    from: { number: 0 },
+    config: config.molasses,
+  });
+  const visibilityMarker = useVisibility(visible => {
+    setVisible(visible);
+  }, []);
+
   return (
     <SkillBarContainer>
       <P>{skill}</P>
-      <progress value={level} max={10} />
+      <animated.progress value={props.number} max={10} ref={visibilityMarker} />
     </SkillBarContainer>
   );
 };
