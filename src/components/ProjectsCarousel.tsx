@@ -34,7 +34,11 @@ const CarouselArrow: React.FC<CarouselArrowProps> = ({
   direction,
 }) => {
   return (
-    <StyledArrow direction={direction} onClick={e => onClick && onClick(e)}>
+    <StyledArrow
+      title={`Carousel ${direction}`}
+      direction={direction}
+      onClick={e => onClick && onClick(e)}
+    >
       {children}
     </StyledArrow>
   );
