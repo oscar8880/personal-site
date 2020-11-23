@@ -56,7 +56,14 @@ const IndexPage: React.FC = () => (
               <TextContainer>
                 <P>
                   All icons are sourced from Font Awesome{' '}
-                  <a href="https://fontawesome.com/">here</a>
+                  <a
+                    rel="noopener noreferrer"
+                    title="Font Awesome Link"
+                    target="_blank"
+                    href="https://fontawesome.com/"
+                  >
+                    here
+                  </a>
                 </P>
               </TextContainer>
             </Section>
@@ -65,7 +72,12 @@ const IndexPage: React.FC = () => (
               <TextContainer>
                 <P>
                   Laptop vector image from Raw Pixel{' '}
-                  <a href="https://www.rawpixel.com/image/382509/free-illustration-vector-computer-laptop-isometric">
+                  <a
+                    rel="noopener noreferrer"
+                    title="RawPixel Link"
+                    target="_blank"
+                    href="https://www.rawpixel.com/image/382509/free-illustration-vector-computer-laptop-isometric"
+                  >
                     here
                   </a>
                 </P>

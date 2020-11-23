@@ -68,8 +68,17 @@ const Header: React.FC = () => {
       </UnstyledLink>
 
       <BurgerContainer>
-        <UnstyledButton type="button" onClick={() => setShowMenu(true)}>
-          <FontAwesomeIcon size="3x" color="#020202" icon={faBars} />
+        <UnstyledButton
+          title="Open Navigation Menu"
+          type="button"
+          onClick={() => setShowMenu(true)}
+        >
+          <FontAwesomeIcon
+            size="3x"
+            color="#020202"
+            icon={faBars}
+            title="Open Navigation Menu"
+          />
         </UnstyledButton>
       </BurgerContainer>
       <NavLinkContainer>

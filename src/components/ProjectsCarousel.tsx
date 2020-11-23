@@ -66,7 +66,11 @@ const StyledDot = styled.button<StyledDotProps>`
 
 const CustomDot: React.FC<DotProps> = ({ onClick, children, ...props }) => {
   return (
-    <StyledDot active={props.active} onClick={e => onClick && onClick(e)}>
+    <StyledDot
+      title="Carousel Item"
+      active={props.active}
+      onClick={e => onClick && onClick(e)}
+    >
       {children}
     </StyledDot>
   );

@@ -137,14 +137,31 @@ const IntroSection: React.FC = () => {
             development enthusiast
           </Strapline>
           <IconContainer>
-            <StyledLink href="https://github.com/oscar8880" target="_blank">
-              <StyledIcon size="3x" color="#020202" icon={faGithubSquare} />
+            <StyledLink
+              title="Github Link"
+              rel="noopener noreferrer"
+              href="https://github.com/oscar8880"
+              target="_blank"
+            >
+              <StyledIcon
+                title="Github Link"
+                size="3x"
+                color="#020202"
+                icon={faGithubSquare}
+              />
             </StyledLink>
             <StyledLink
+              title="LinkedIn Link"
+              rel="noopener noreferrer"
               href="https://www.linkedin.com/in/oscar-zealley-81a027123/"
               target="_blank"
             >
-              <StyledIcon size="3x" color="#020202" icon={faLinkedin} />
+              <StyledIcon
+                title="Github Link"
+                size="3x"
+                color="#020202"
+                icon={faLinkedin}
+              />
             </StyledLink>
           </IconContainer>
         </animated.div>

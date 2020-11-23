@@ -35,14 +35,31 @@ const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <IconContainer>
-        <StyledLink href="https://github.com/oscar8880" target="_blank">
-          <StyledIcon size="3x" color="#020202" icon={faGithubSquare} />
-        </StyledLink>
         <StyledLink
-          href="https://www.linkedin.com/in/oscar-zealley-81a027123/"
+          title="Github Link"
+          rel="noopener noreferrer"
+          href="https://github.com/oscar8880"
           target="_blank"
         >
-          <StyledIcon size="3x" color="#020202" icon={faLinkedin} />
+          <StyledIcon
+            title="Github Link"
+            size="3x"
+            color="#020202"
+            icon={faGithubSquare}
+          />
+        </StyledLink>
+        <StyledLink
+          title="LinkedIn Link"
+          href="https://www.linkedin.com/in/oscar-zealley-81a027123/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <StyledIcon
+            title="LinkedIn Link"
+            size="3x"
+            color="#020202"
+            icon={faLinkedin}
+          />
         </StyledLink>
       </IconContainer>
       <P>
