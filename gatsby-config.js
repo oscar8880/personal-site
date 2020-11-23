@@ -39,7 +39,6 @@ module.exports = {
         icon: 'src/images/oLogo.png',
       },
     },
-    'gatsby-plugin-offline',
     'gatsby-plugin-typescript',
   ],
 };
