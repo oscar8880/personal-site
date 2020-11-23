@@ -102,7 +102,7 @@ const ContactSection: React.FC = () => {
             </Col>
             <Col xs={12}>
               <StyledLabel htmlFor="message">Message</StyledLabel>
-              <StyledTextArea id="message"></StyledTextArea>
+              <StyledTextArea name="message" id="message"></StyledTextArea>
             </Col>
             <Col sm={5}>
               <StyledButton type="submit">Submit</StyledButton>

@@ -20,9 +20,12 @@ const BlobContainer = styled.div`
   opacity: 0.15;
   position: absolute;
   top: ${({ theme }) => theme.spacer['xl']};
-  left: ${({ theme }) => theme.spacer['xl']};
+  right: ${({ theme }) => theme.spacer[0]};
+  @media (min-width: ${({ theme }) => theme.breakpoint.sm}) {
+    right: 25%;
+  }
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
-    left: ${({ theme }) => theme.spacer['2xl']};
+    right: 50%;
   }
 `;
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { H3 } from './Typography';
-import Img from 'gatsby-image';
+import Img, { GatsbyImageProps } from 'gatsby-image';
 import 'react-multi-carousel/lib/styles.css';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0px 14px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgba(16, 27, 30, 0.15), 0 2px 2px rgba(16, 27, 30, 0.15),
+    0 4px 4px rgba(16, 27, 30, 0.15);
   background-color: ${({ theme }) => theme.colour.white};
   margin-bottom: ${({ theme }) => theme.spacer[12]};
   @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
@@ -15,6 +16,7 @@ const Container = styled.div`
   }
   max-width: 350px;
   min-width: 300px;
+  border-radius: 4px;
 `;
 
 const InfoContainer = styled.div`
@@ -29,6 +31,11 @@ const InfoContainer = styled.div`
 const Description = styled.div`
   padding-top: ${({ theme }) => theme.spacer[2]};
   line-height: 1.25;
+`;
+
+const StyledImg = styled(Img)<GatsbyImageProps>`
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 `;
 
 interface ProjectCardProps {
@@ -49,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Container>
-      <Img fluid={{ ...image }} title={title} />
+      <StyledImg fluid={{ ...image }} title={title} />
       <InfoContainer>
         <H3>{title}</H3>
         <Description>{description}</Description>
