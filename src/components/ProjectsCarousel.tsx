@@ -106,6 +106,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     <StyledCarousel
       showDots
       swipeable
+      minimumTouchDrag={30}
       responsive={responsive}
       removeArrowOnDeviceType={['mobile', 'tablet']}
       containerClass="carouselContainer"

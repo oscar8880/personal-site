@@ -13,7 +13,8 @@ const NavLink = styled(Link)<NavLinkProps>`
   margin-bottom: ${({ theme, size }) =>
     size === 'desktop' ? 'none' : theme.spacer[10]};
   color: ${({ theme }) => theme.colour.primaryFont};
-  margin-left: ${({ theme }) => theme.spacer[7]};
+  margin-left: ${({ theme, size }) =>
+    size === 'desktop' ? theme.spacer[7] : theme.spacer[0]};
   position: relative;
   ::after {
     content: '';
