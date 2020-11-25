@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/oscar8880/personal-site">
-  <img src="./images/siteLogo.png" alt="Logo" height="120">
+  <img src="./src/images/siteLogo.png" alt="Logo" height="120">
   </a>
 </p>
 
@@ -13,7 +13,7 @@
 
 ## About
 
-![Screenshot](images/siteScreenshot.png?raw=true)
+![Screenshot](src/images/siteScreenshot.png?raw=true)
 
 This is the repo for my personal website where I present some info about myself and the coding side projects I get involved with outside of my day job!
 
