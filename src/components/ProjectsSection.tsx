@@ -82,6 +82,7 @@ const ProjectSection: React.FC = () => {
           title={project.title}
           description={project.description}
           image={project.image.fluid}
+          link={project.link}
         />
       );
     });

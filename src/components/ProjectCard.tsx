@@ -31,6 +31,19 @@ const Description = styled.div`
   line-height: 1.25;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colour.primaryFont};
+  transition: ${({ theme }) => theme.transition.default};
+  :hover {
+    color: ${({ theme }) => theme.colour.pink};
+  }
+`;
+
+const UnstyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const StyledImg = styled(Img)<GatsbyImageProps>`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -45,18 +58,24 @@ interface ProjectCardProps {
     src: string;
     srcSet: string;
   };
+  link: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   image,
+  link,
 }) => {
   return (
     <Container>
-      <StyledImg fluid={{ ...image }} title={title} />
+      <UnstyledLink rel="noopener noreferrer" target="_blank" href={link}>
+        <StyledImg fluid={{ ...image }} title={title} />
+      </UnstyledLink>
       <InfoContainer>
-        <H3>{title}</H3>
+        <StyledLink rel="noopener noreferrer" target="_blank" href={link}>
+          <H3>{title}</H3>
+        </StyledLink>
         <Description>{description}</Description>
       </InfoContainer>
     </Container>
