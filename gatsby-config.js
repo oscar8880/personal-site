@@ -40,5 +40,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GA_TRACKING_ID],
+      },
+    },
   ],
 };

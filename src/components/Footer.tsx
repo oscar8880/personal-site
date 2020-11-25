@@ -63,8 +63,15 @@ const Footer: React.FC = () => {
         </StyledLink>
       </IconContainer>
       <P>
-        © {new Date().getFullYear()} Oscar Zealley, Built with{' '}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        © {new Date().getFullYear()} Oscar Zealley,{' '}
+        <a
+          title="Gatsby Website"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://github.com/oscar8880/personal-site"
+        >
+          view source code
+        </a>
       </P>
     </StyledFooter>
   );

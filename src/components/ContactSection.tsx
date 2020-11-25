@@ -94,15 +94,29 @@ const ContactSection: React.FC = () => {
           <Row>
             <Col sm={5}>
               <StyledLabel htmlFor="name">Name</StyledLabel>
-              <StyledInput type="text" name="name" id="name"></StyledInput>
+              <StyledInput
+                required
+                type="text"
+                name="name"
+                id="name"
+              ></StyledInput>
             </Col>
             <Col sm={5} offset={{ sm: 2 }}>
               <StyledLabel htmlFor="email">Email</StyledLabel>
-              <StyledInput type="email" name="email" id="email"></StyledInput>
+              <StyledInput
+                required
+                type="email"
+                name="email"
+                id="email"
+              ></StyledInput>
             </Col>
             <Col xs={12}>
               <StyledLabel htmlFor="message">Message</StyledLabel>
-              <StyledTextArea name="message" id="message"></StyledTextArea>
+              <StyledTextArea
+                required
+                name="message"
+                id="message"
+              ></StyledTextArea>
             </Col>
             <Col sm={5}>
               <StyledButton type="submit">Submit</StyledButton>
