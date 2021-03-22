@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Blob from './Blob';
 import { SectionTitle } from './SectionTitle';
-import { faLaptop, faChartArea } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLaptop,
+  faChartArea,
+  faComments,
+} from '@fortawesome/free-solid-svg-icons';
 import ExperienceItem from './ExperienceItem';
 
 const PageContainer = styled.div`
@@ -42,7 +46,13 @@ const ExperienceSection: React.FC = () => {
       </BlobContainer>
       <ExperienceContainer>
         <ExperienceItem
-          dates="2019 - Present"
+          dates="2021 - Present"
+          jobTitle="Frontend Engineer"
+          company="Twilio"
+          icon={faComments}
+        />
+        <ExperienceItem
+          dates="2019 - 2021"
           jobTitle="Frontend Engineer"
           company="Deloitte Digital"
           icon={faLaptop}
